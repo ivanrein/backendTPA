@@ -33,3 +33,4 @@ Route::get('users', 'ShineController@getUsers')->middleware(['AccessTokenMiddlew
 Route::get('photos', 'ShineController@getPhotos')->middleware(['AccessTokenMiddleware']);
 Route::get('/test', 'ShineController@test');
 Route::POST('CheckUser', 'ShineController@checkUser');
+Route::get('fetchCurrentUser', 'ShineController@fetchCurrentUser')->middleware(['AccessTokenMiddleware']);

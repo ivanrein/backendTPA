@@ -141,6 +141,12 @@ class ShineController extends Controller
         return Response::json($photos, 200);
     }
 
+
+    public function fetchCurrentUser(Request $request){
+        $currUser = $request->get('CurrentUser'); // dari middleware
+        return Response::json(['user' => $currUser, 'school' => $currUser->school()->get()[0]], 200);
+    }
+
     public function test(Request $request){
 //        $c = new \Illuminate\Database\Eloquent\Collection;
 //        $schools = School::all();

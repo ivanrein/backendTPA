@@ -16,7 +16,7 @@ class AccessTokenMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user_ac_token = $request->header('user_access_token');
+        $user_ac_token = $request->header('utoken');
         $user = User::where('auth_token', '=', $user_ac_token)->firstOrFail();
         $request->attributes->add(['CurrentUser' => $user]);
         return $next($request);
