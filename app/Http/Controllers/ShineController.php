@@ -59,8 +59,7 @@ class ShineController extends Controller
     }
 
     public function savePhoto(Request $request){
-        $user_ac_token = \Illuminate\Support\Facades\Request::header('token');
-        $user = User::where('token', '=', $user_ac_token)->first();
+        $user = $request->get('CurrentUser');
         if($user != null) {
             $photo64 = $request->json()->get('encodedphoto');
             Photo::create(['user_id' => $user->id, 'photo' => $photo64]);
@@ -164,8 +163,8 @@ class ShineController extends Controller
 //                    ->whereRaw('object_id = users.id and subject_id = 1')->where('users.id', '!=', 1);
 //            })
 //            ->get();
-        $user = User::with('school')->where('email', '=', 'squall313390@yahoo.co.id')->first();
-        return Response::json(['user' => $user]);
+        $user = User::find(1)->photos()->get();
+        return Response::json(['photos' =>$user]);
     }
 
     function haversine($lat1,$lon1,$lat2,$lon2) {
