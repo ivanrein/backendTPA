@@ -93,9 +93,10 @@ class ShineController extends Controller
                 $user->save();
                 return Response::json(['result' => 'success', 'token' => $user->auth_token, 'user' => $user], 200);
             }else{
-                $user = User::create($request->all());
+                $user = User::with('school')->find(User::create($request->all())->id);
                 $user->auth_token = str_random(60);
                 $user->save();
+
                 return Response::json(['result' => 'success', 'token' => $user->auth_token, 'user' => $user], 200);
             }
         }else{
@@ -163,8 +164,8 @@ class ShineController extends Controller
 //                    ->whereRaw('object_id = users.id and subject_id = 1')->where('users.id', '!=', 1);
 //            })
 //            ->get();
-        $user = User::find(1)->photos()->get();
-        return Response::json(['photos' =>$user]);
+        $user = User::find(2)->photos()->get();
+        return "asd";
     }
 
     function haversine($lat1,$lon1,$lat2,$lon2) {
