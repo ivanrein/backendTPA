@@ -36,3 +36,5 @@ Route::POST('CheckUser', 'ShineController@checkUser');
 Route::get('fetchCurrentUser', 'ShineController@fetchCurrentUser')->middleware(['AccessTokenMiddleware']);
 Route::get('getTopSchools', 'ShineController@getTopSchools');
 Route::get('getTopStudents', 'ShineController@getTopStudents');
+Route::post('vote', 'ShineController@vote')->middleware(['AccessTokenMiddleware']);
+Route::get('notif', 'ShineController@notif');

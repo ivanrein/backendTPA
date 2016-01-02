@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Photo;
 use App\School;
 use App\User;
+use App\Vote;
 use GuzzleHttp\Client;
+use App\Events\NotifEvent;
+use Pusher\Pusher;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -18,6 +21,19 @@ use RecursiveIteratorIterator;
 
 class ShineController extends Controller
 {
+
+    public function haversine($lat1,$lon1,$lat2,$lon2) {
+        $R = 6371; // Radius of the earth in km
+        $dLat = deg2rad($lat2-$lat1);  // deg2rad below
+        $dLon = deg2rad($lon2-$lon1);
+        $a =sin($dLat/2) * sin($dLat/2) +
+            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            sin($dLon/2) * sin($dLon/2);
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+        $d = $R * $c;
+        return $d;
+        
+    }
 
     public function register(Request $request){
         $email = $request->json()->get('email');
@@ -119,19 +135,28 @@ class ShineController extends Controller
     }
 
     public function getUsers(Request $request){
+
+
         $lat = $request->get('lat');
+
         $long = $request->get('long');
+
         $schools = School::all();
         $users = new \Illuminate\Database\Eloquent\Collection;
-        for($i = 0; i < $schools->count(); $i++){
+        
+
+        for($i = 0; $i < $schools->count(); $i++){
             $schoolLat = $schools->get($i)->latitude;
             $schoolLong = $schools->get($i)->longitude;
-            if(haversine($lat, $long, $schoolLat, $schoolLong) < 10){
+
+            if($this->haversine($lat, $long, $schoolLat, $schoolLong) < 10){
+             
                 $users->push($schools->get($i)->usersNotVoted($request->get('CurrentUser')->id));
+
             }
         }
 
-        return Response::json($users->collapse(), 200);
+        return Response::json(['users' => $users->collapse()], 200);
     }
 
     public function getPhotos(Request $request){
@@ -168,17 +193,7 @@ class ShineController extends Controller
         else return "asd";
     }
 
-    function haversine($lat1,$lon1,$lat2,$lon2) {
-        $R = 6371; // Radius of the earth in km
-        $dLat = deg2rad($lat2-$lat1);  // deg2rad below
-        $dLon = deg2rad($lon2-$lon1);
-        $a =sin($dLat/2) * sin($dLat/2) +
-            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
-            sin($dLon/2) * sin($dLon/2);
-        $c = 2 * atan2(Math.sqrt($a), sqrt(1-$a));
-        $d = $R * $c;
-        return $d;
-    }
+  
 
 
     // buat ngambil list top school... harusnya sih
@@ -268,5 +283,20 @@ class ShineController extends Controller
         //
     }
 
+    public function vote(Request $request){
+        $user = $request->get('CurrentUser');
+        $rate = $request->json()->get('rate');
+        $objectId = $request->json()->get('object_id');
+        $vote = Vote::create(['subject_id' => $user->id,
+                'object_id' => $objectId, 'rate' => $rate]);
+        return Response::json(['vote' => $vote], 200);
+    }
 
+    public function notif(Request $request){
+        $title = $request->get('title');
+        $content = $request->get('content');
+        event(new NotifEvent($title, $content));
+        return  Response::json(200, 200);
+    }   
+    
 }
