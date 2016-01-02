@@ -164,20 +164,36 @@ class ShineController extends Controller
 //                    ->whereRaw('object_id = users.id and subject_id = 1')->where('users.id', '!=', 1);
 //            })
 //            ->get();
-        $user = User::find(2)->photos()->get();
-        return "asd";
+        $lat = $request-json()->get('lat');
+        if($lat != null )return $lat;
+        else return "asd";
     }
 
     function haversine($lat1,$lon1,$lat2,$lon2) {
         $R = 6371; // Radius of the earth in km
-        $dLat = deg2rad(lat2-lat1);  // deg2rad below
-        $dLon = deg2rad(lon2-lon1);
-        $a =sin(dLat/2) * sin(dLat/2) +
-            cos(deg2rad(lat1)) * cos(deg2rad(lat2)) *
-            sin(dLon/2) * sin(dLon/2);
-        $c = 2 * atan2(Math.sqrt(a), sqrt(1-a));
-        $d = R * c;
+        $dLat = deg2rad($lat2-$lat1);  // deg2rad below
+        $dLon = deg2rad($lon2-$lon1);
+        $a =sin($dLat/2) * sin($dLat/2) +
+            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            sin($dLon/2) * sin($dLon/2);
+        $c = 2 * atan2(Math.sqrt($a), sqrt(1-$a));
+        $d = $R * $c;
         return $d;
+    }
+
+
+    // buat ngambil list top school... harusnya sih
+    public function getTopSchools(Request $request){
+        $topSchools = DB::select('select a.id, a.name, avg(yeah.oneuseraverage) as schoolaverage from schools a, ( select b.id, b.school_id, b.name, avg(c.rate) as oneuseraverage from users b join votes c on b.id = c.object_id group by b.id, b.name ) as yeah where yeah.school_id = a.id group by id, name order by schoolaverage desc');
+        return Response::json(['topschools' => $topSchools], 200);
+    }
+
+
+    // nerima school id
+    public function getTopStudents(Request $request){
+        $schoolId = $request->json()->get('id');
+        $topStudents = DB::select('select a.name, avg(b.rate) as rata from users a join votes b on a.id = b.object_id where a.school_id = :schoolid group by a.id, a.name order by rata desc', ['schoolid' => $schoolId]);
+        return Response::json(['topStudents' => $schoolId]);
     }
 
     /**
