@@ -119,9 +119,8 @@ class ShineController extends Controller
     }
 
     public function getUsers(Request $request){
-        $lat = $request->input('lat');
-        $long = $request->input('long');
-        $id = $request->input('email');
+        $lat = $request->get('lat');
+        $long = $request->get('long');
         $schools = School::all();
         $users = new \Illuminate\Database\Eloquent\Collection;
         for($i = 0; i < $schools->count(); $i++){
@@ -164,7 +163,7 @@ class ShineController extends Controller
 //                    ->whereRaw('object_id = users.id and subject_id = 1')->where('users.id', '!=', 1);
 //            })
 //            ->get();
-        $lat = $request-json()->get('lat');
+        $lat = $request->get('lat');
         if($lat != null )return $lat;
         else return "asd";
     }
