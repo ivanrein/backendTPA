@@ -19,7 +19,7 @@ class School extends Model
     // get users in this schools that had not been voted by $id, and profile picture
     public function usersNotVoted($id){
         $user = User::find($id);
-        $yespls = DB::select('select users.id, users.name, users.email, users.gender, users.school_id, b.id as photo_id, b.photo from users left join photos b on b.id = (select photos.id from photos where user_id = users.id limit 1) where not exists(select * from votes where subject_id = :idsatu and object_id = users.id) and users.id != :iddua and school_id = :schoolid', ['idsatu' => $id, 'iddua' => $id, 'schoolid' => $this->id]);
+        $yespls = DB::select('select users.id, users.name, users.bio, users.email, users.gender, users.school_id, schools.name as school_name, b.id as photo_id, b.photo from users left join photos b on b.id = (select photos.id from photos where user_id = users.id limit 1) join schools on schools.id = users.school_id where not exists(select * from votes where subject_id = :idsatu and object_id = users.id) and users.id != :iddua and school_id = :schoolid', ['idsatu' => $id, 'iddua' => $id, 'schoolid' => $this->id]);
         return $yespls;
 
 
