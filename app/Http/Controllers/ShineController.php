@@ -58,14 +58,7 @@ class ShineController extends Controller
         }
     }
 
-    public function update(Request $request){
-        $email = $request->json()->get('email');
-        $bio = $request->json()->get('bio');
-        $user = User::where('email', '=', $email);
-        $user->bio = $bio;
-        $user->save();
-        return Response::json(['result' => 'success', 'user' => $user], 200);
-    }
+    
 
     public function deletePhoto(Request $request){
             $photoId = $request->json()->get('id');
@@ -77,7 +70,7 @@ class ShineController extends Controller
     public function savePhoto(Request $request){
         $user = $request->get('CurrentUser');
         if($user != null) {
-            $photo64 = $request->json()->get('encodedphoto');
+            $photo64 = $request->json()->get('photo');
             Photo::create(['user_id' => $user->id, 'photo' => $photo64]);
             return Response::json(['result' => 'success'], 200);
         }
