@@ -71,8 +71,8 @@ class ShineController extends Controller
         $user = $request->get('CurrentUser');
         if($user != null) {
             $photo64 = $request->json()->get('photo');
-            Photo::create(['user_id' => $user->id, 'photo' => $photo64]);
-            return Response::json(['result' => 'success'], 200);
+            $newPhoto = Photo::create(['user_id' => $user->id, 'photo' => $photo64]);
+            return Response::json(['result' => 'success', 'photo' => $newPhoto->id], 200);
         }
         else{
             return Response::json(['result' => 'failed', 'message' => 'not authenticated']);
