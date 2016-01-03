@@ -26,7 +26,7 @@ Route::get('/user', function () {
 Route::post('register', 'ShineController@register');
 Route::post('login', 'ShineController@login');
 Route::post('facebooklogin', 'ShineController@facebookLogin');
-Route::post('update', 'ShineController@update');
+Route::post('update', 'ShineController@update')->middleware(['AccessTokenMiddleware']);
 Route::get('schools', 'ShineController@getSchools');
 Route::get('user', 'ShineController@getUser')->middleware(['AccessTokenMiddleware']);
 Route::get('users', 'ShineController@getUsers')->middleware(['AccessTokenMiddleware']);
@@ -38,3 +38,8 @@ Route::get('getTopSchools', 'ShineController@getTopSchools');
 Route::get('getTopStudents', 'ShineController@getTopStudents');
 Route::post('vote', 'ShineController@vote')->middleware(['AccessTokenMiddleware']);
 Route::get('notif', 'ShineController@notif');
+Route::post('SavePhoto', 'ShineController@savePhoto')->middleware(['AccessTokenMiddleware']);
+
+
+
+

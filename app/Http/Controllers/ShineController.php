@@ -160,9 +160,9 @@ class ShineController extends Controller
     }
 
     public function getPhotos(Request $request){
-        $user = User::where('email', '=', $request->json()->get('email'))->first();
+        $user = User::where('email', '=', $request->get('email'))->first();
         $photos = $user->photos()->get();
-        return Response::json($photos, 200);
+        return Response::json(['photos' => $photos], 200);
     }
 
 
@@ -260,7 +260,7 @@ class ShineController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -298,5 +298,14 @@ class ShineController extends Controller
         event(new NotifEvent($title, $content));
         return  Response::json(200, 200);
     }   
+
+    public function update(Request $request)
+    {
+        $user = $request->get('CurrentUser');
+        $newBio = $request->json()->get('bio');
+        $user->bio = $newBio;
+        $user->save();
+        return Response::json(['user' => $user], 200);
+    }
     
 }
