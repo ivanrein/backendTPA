@@ -198,7 +198,7 @@ class ShineController extends Controller
 
     // nerima school id
     public function getTopStudents(Request $request){
-        $schoolId = $request->get('id');
+        $schoolId = $request->get('school_id');
         $topStudents = DB::select('select a.name, avg(b.rate) as rata from users a join votes b on a.id = b.object_id where a.school_id = :schoolid group by a.id, a.name order by rata desc', ['schoolid' => $schoolId]);
         return Response::json(['topStudents' => $topStudents]);
     }
