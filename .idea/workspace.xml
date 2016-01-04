@@ -39,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <caret line="21" column="31" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -68,12 +68,29 @@
       <file leaf-file-name="ShineController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ShineController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25110784" vertical-offset="0" max-vertical-offset="5270">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.41063514" vertical-offset="3173" max-vertical-offset="5270">
+              <caret line="203" column="5" selection-start-line="203" selection-start-column="5" selection-end-line="203" selection-end-column="5" />
               <folding>
-                <marker date="1451919725771" expanded="true" signature="6529:6827" placeholder="select a.id,..schools..." />
-                <marker date="1451919725771" expanded="true" signature="6610:6743" placeholder="select b.id,..users..." />
-                <marker date="1451919725771" expanded="true" signature="7067:7220" placeholder="select a.nam..users..." />
+                <element signature="e#40#54#0#PHP" expanded="true" />
+                <marker date="1451932511669" expanded="true" signature="6529:6827" placeholder="select a.id,..schools..." />
+                <marker date="1451932511669" expanded="true" signature="6610:6743" placeholder="select b.id,..users..." />
+                <marker date="1451932511669" expanded="true" signature="7067:7337" placeholder="select a.nam..users..." />
+                <marker date="1451932511669" expanded="true" signature="7208:7257" placeholder="select photo..photos..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="School.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/School.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="561">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+              <folding>
+                <element signature="e#23#62#0#PHP" expanded="true" />
+                <marker date="1451917564302" expanded="true" signature="493:919" placeholder="select users..users..." />
+                <marker date="1451917564302" expanded="true" signature="673:726" placeholder="select photo..photos..." />
+                <marker date="1451917564302" expanded="true" signature="798:869" placeholder="select * fro..votes..." />
               </folding>
             </state>
           </provider>
@@ -94,16 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="493">
               <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2015_12_24_060009_create_photos_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2015_12_24_060009_create_photos_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="629">
-              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -388,7 +395,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -711,16 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/School.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52732646" vertical-offset="0" max-vertical-offset="677">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2015_12_24_055947_create_votes_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
@@ -769,14 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.769231" vertical-offset="24" max-vertical-offset="714">
@@ -809,14 +798,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/School.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="561">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+            <marker date="1451917564302" expanded="true" signature="493:919" placeholder="select users..users..." />
+            <marker date="1451917564302" expanded="true" signature="673:726" placeholder="select photo..photos..." />
+            <marker date="1451917564302" expanded="true" signature="798:869" placeholder="select * fro..votes..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ShineController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25110784" vertical-offset="0" max-vertical-offset="5270">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.41063514" vertical-offset="3173" max-vertical-offset="5270">
+          <caret line="203" column="5" selection-start-line="203" selection-start-column="5" selection-end-line="203" selection-end-column="5" />
           <folding>
-            <marker date="1451919725771" expanded="true" signature="6529:6827" placeholder="select a.id,..schools..." />
-            <marker date="1451919725771" expanded="true" signature="6610:6743" placeholder="select b.id,..users..." />
-            <marker date="1451919725771" expanded="true" signature="7067:7220" placeholder="select a.nam..users..." />
+            <element signature="e#40#54#0#PHP" expanded="true" />
+            <marker date="1451932511669" expanded="true" signature="6529:6827" placeholder="select a.id,..schools..." />
+            <marker date="1451932511669" expanded="true" signature="6610:6743" placeholder="select b.id,..users..." />
+            <marker date="1451932511669" expanded="true" signature="7067:7337" placeholder="select a.nam..users..." />
+            <marker date="1451932511669" expanded="true" signature="7208:7257" placeholder="select photo..photos..." />
           </folding>
         </state>
       </provider>
