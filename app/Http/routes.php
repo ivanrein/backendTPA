@@ -39,7 +39,7 @@ Route::get('getTopStudents', 'ShineController@getTopStudents');
 Route::post('vote', 'ShineController@vote')->middleware(['AccessTokenMiddleware']);
 Route::get('notif', 'ShineController@notif');
 Route::post('SavePhoto', 'ShineController@savePhoto')->middleware(['AccessTokenMiddleware']);
-
+Route::post('DeletePhoto', 'ShineController@deletePhoto')->middleware(['AccessTokenMiddleware']);
 
 
 
