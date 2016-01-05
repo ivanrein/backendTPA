@@ -142,7 +142,7 @@ class ShineController extends Controller
             $schoolLat = $schools->get($i)->latitude;
             $schoolLong = $schools->get($i)->longitude;
 
-            if($this->haversine($lat, $long, $schoolLat, $schoolLong) < 10){
+            if($this->haversine($lat, $long, $schoolLat, $schoolLong) < 50){
              
                 $users->push($schools->get($i)->usersNotVoted($request->get('CurrentUser')->id));
 
